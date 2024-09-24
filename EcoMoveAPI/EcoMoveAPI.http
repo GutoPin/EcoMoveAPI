@@ -1,0 +1,6 @@
+@EcoMoveAPI_HostAddress = http://localhost:5132
+
+GET {{EcoMoveAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
