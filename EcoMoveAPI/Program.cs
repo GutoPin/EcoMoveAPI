@@ -174,8 +174,6 @@ builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionCommandService, TransactionCommandService>();
 builder.Services.AddScoped<ITransactionQueryService, TransactionQueryService>();
 
-var app = builder.Build();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllPolicy",
@@ -183,6 +181,8 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
+
+var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
