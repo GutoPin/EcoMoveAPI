@@ -68,6 +68,9 @@ builder.Services.AddDbContext<AppDbContext>(
                     .EnableDetailedErrors();
     });
 
+// Configure Lowercase URLs
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(
     c =>
@@ -111,14 +114,19 @@ builder.Services.AddSwaggerGen(
         });
     });
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
+// Add CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllPolicy",
+        policy => policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-// UserManagement Bounded Context Injection Configuration
-
-// TokenSettings Configuration
 
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
 
@@ -174,14 +182,6 @@ builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionCommandService, TransactionCommandService>();
 builder.Services.AddScoped<ITransactionQueryService, TransactionQueryService>();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAllPolicy",
-        policy => policy.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-});
-
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -198,9 +198,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseRequestAuthorization();
-
 app.UseCors("AllowAllPolicy");
+
+app.UseRequestAuthorization();
 
 app.UseHttpsRedirection();
 
