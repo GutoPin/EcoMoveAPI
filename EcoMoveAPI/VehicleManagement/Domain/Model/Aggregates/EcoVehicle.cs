@@ -17,9 +17,10 @@ public partial class EcoVehicle
         Status = string.Empty;
         ImageUrl = string.Empty;
         UserId = 0;
+        EcoVehicleName = string.Empty;
     }
     
-    public EcoVehicle(string model, int ecoVehicleTypeId, int batteryLevel, double latitude, double longitude, string status, string imageUrl, int userId)
+    public EcoVehicle(string model, int ecoVehicleTypeId, int batteryLevel, double latitude, double longitude, string status, string imageUrl, int userId, string ecoVehicleName)
     {
         Model = model;
         EcoVehicleTypeId = ecoVehicleTypeId;
@@ -28,6 +29,7 @@ public partial class EcoVehicle
         Status = status;
         ImageUrl = imageUrl;
         UserId = userId;
+        EcoVehicleName = ecoVehicleName;
     }
 
     public EcoVehicle(CreateEcoVehicleCommand command)
@@ -39,6 +41,7 @@ public partial class EcoVehicle
         Status = command.Status;
         ImageUrl = command.ImageUrl;
         UserId = command.UserId;
+        EcoVehicleName = command.EcoVehicleName;
     }
     
     public int EcoVehicleId { get; private set; }
@@ -50,6 +53,8 @@ public partial class EcoVehicle
     public string Status { get; private set; }
     public string ImageUrl { get; private set; }
     public int UserId { get; private set; }
+
+    public string EcoVehicleName { get; private set; }
 
     public object FullLocation => Location.GetLocationObject();
     
