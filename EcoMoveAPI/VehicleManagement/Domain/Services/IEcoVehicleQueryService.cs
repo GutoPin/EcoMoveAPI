@@ -14,4 +14,5 @@ public interface IEcoVehicleQueryService
     Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByBatteryLevelGreaterThanQuery query);
     Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByStatusQuery query);
     Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByEcoVehicleTypeIdQuery idQuery);
+    Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByUserId query);
 }

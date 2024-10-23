@@ -78,5 +78,14 @@ public class EcoVehicleRepository(AppDbContext context) : BaseRepository<EcoVehi
 
         return result.AsEnumerable();
     }
-    
+
+    public async Task<IEnumerable<EcoVehicle>> FindAllEcoVehicleByUserId(int userId)
+    {
+        var result = await Context.Set<EcoVehicle>()
+            .Where(ecoVehicle => ecoVehicle.UserId == userId)
+            .ToListAsync();
+
+        return result.AsEnumerable();
+    }
+
 }

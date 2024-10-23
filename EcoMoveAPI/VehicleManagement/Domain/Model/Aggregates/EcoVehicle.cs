@@ -16,9 +16,10 @@ public partial class EcoVehicle
         Location = new Location(0, 0);
         Status = string.Empty;
         ImageUrl = string.Empty;
+        UserId = 0;
     }
     
-    public EcoVehicle(string model, int ecoVehicleTypeId, int batteryLevel, double latitude, double longitude, string status, string imageUrl)
+    public EcoVehicle(string model, int ecoVehicleTypeId, int batteryLevel, double latitude, double longitude, string status, string imageUrl, int userId)
     {
         Model = model;
         EcoVehicleTypeId = ecoVehicleTypeId;
@@ -26,6 +27,7 @@ public partial class EcoVehicle
         Location = new Location(latitude, longitude);
         Status = status;
         ImageUrl = imageUrl;
+        UserId = userId;
     }
 
     public EcoVehicle(CreateEcoVehicleCommand command)
@@ -36,6 +38,7 @@ public partial class EcoVehicle
         Location = new Location(command.Latitude, command.Longitude);
         Status = command.Status;
         ImageUrl = command.ImageUrl;
+        UserId = command.UserId;
     }
     
     public int EcoVehicleId { get; private set; }
@@ -46,7 +49,8 @@ public partial class EcoVehicle
     public Location Location { get; private set; }
     public string Status { get; private set; }
     public string ImageUrl { get; private set; }
-    
+    public int UserId { get; private set; }
+
     public object FullLocation => Location.GetLocationObject();
     
     public ICollection<Booking> Bookings { get; }

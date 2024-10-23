@@ -121,5 +121,19 @@ public class EcoVehiclesController(IEcoVehicleCommandService ecoVehicleCommandSe
         var ecoVehicleResources = ecoVehicles.Select(EcoVehicleResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(ecoVehicleResources);
     }
+
+    
+    [HttpGet("userid/{userId}")]
+    [SwaggerOperation(
+        Summary = "Gets all eco vehicles by userId",
+        Description = "Gets all eco vehicles for a given userId",
+        OperationId = "GetAllEcoVehiclesByUserId")]
+    public async Task<IActionResult> GetAllEcoVehiclesByUserId(int userId)
+    {
+        var getEcoVehiclesByUserId = new GetAllEcoVehiclesByUserId(userId);
+        var ecoVehicles = await ecoVehicleQueryService.Handle(getEcoVehiclesByUserId);
+        var ecoVehicleResources = ecoVehicles.Select(EcoVehicleResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(ecoVehicleResources);
+    }
 }
 

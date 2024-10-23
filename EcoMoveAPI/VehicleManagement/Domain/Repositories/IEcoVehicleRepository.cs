@@ -15,4 +15,5 @@ public interface IEcoVehicleRepository : IBaseRepository<EcoVehicle>
     Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByEcoVehicleTypeIdAsync(int EcoVehicleTypeId);
     Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByStatusAsync(string status);
     Task<IEnumerable<EcoVehicle>> FindAllEcoVehiclesByBatteryLevelGreaterThanAsync(int batteryLevel);
+    Task<IEnumerable<EcoVehicle>> FindAllEcoVehicleByUserId(int userId);
 }

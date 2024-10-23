@@ -36,4 +36,10 @@ public class EcoVehicleQueryService(IEcoVehicleRepository ecoVehicleRepository) 
     {
         return await ecoVehicleRepository.FindAllEcoVehiclesByEcoVehicleTypeIdAsync(idQuery.EcoVehicleTypeId);
     }
+
+    public async Task<IEnumerable<EcoVehicle>> Handle(GetAllEcoVehiclesByUserId query)
+    {
+        return await ecoVehicleRepository.FindAllEcoVehicleByUserId(query.UserId);
+    }
+
 }
