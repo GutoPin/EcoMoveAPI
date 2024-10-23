@@ -86,6 +86,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<EcoVehicle>().Property(v => v.Model).IsRequired();
         builder.Entity<EcoVehicle>().Property(v => v.EcoVehicleId).IsRequired();
         builder.Entity<EcoVehicle>().Property(v => v.BatteryLevel).IsRequired();
+        builder.Entity<EcoVehicle>().Property(v => v.UserId).IsRequired();
         builder.Entity<EcoVehicle>().OwnsOne(v => v.Location, l =>
         {
             l.WithOwner().HasForeignKey("EcoVehicleId");
