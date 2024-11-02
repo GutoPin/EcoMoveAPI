@@ -1,3 +1,4 @@
+using EcoMoveAPI.BlogManagment.Domain.Model.Aggregates;
 using EcoMoveAPI.BookingReservation.Domain.Model.Aggregates;
 using EcoMoveAPI.CustomerSupport.Domain.Model.Aggregates;
 using EcoMoveAPI.CustomerSupport.Domain.Model.Entities;
@@ -120,6 +121,14 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Booking>().Property(b => b.StartTime).IsRequired();
         builder.Entity<Booking>().Property(b => b.EndTime).IsRequired();
         builder.Entity<Booking>().Property(b => b.Status).IsRequired();
+        
+        // BlogManagement Context
+        
+        builder.Entity<Blog>().HasKey(b => b.BlogId);
+        builder.Entity<Blog>().Property(b => b.BlogId).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Blog>().Property(b => b.Title).IsRequired();
+        builder.Entity<Blog>().Property(b => b.Description).IsRequired();
+        builder.Entity<Blog>().Property(b => b.UserId).IsRequired();
 
         // CustomerSupport Context
 

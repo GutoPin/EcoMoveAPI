@@ -1,3 +1,8 @@
+using EcoMoveAPI.BlogManagment.Application.Internal.CommandServices;
+using EcoMoveAPI.BlogManagment.Application.Internal.QueryServices;
+using EcoMoveAPI.BlogManagment.Domain.Repositories;
+using EcoMoveAPI.BlogManagment.Domain.Services;
+using EcoMoveAPI.BlogManagment.Infrastructure.Persistence.EFC.Repositories;
 using EcoMoveAPI.BookingReservation.Application.Internal.CommandServices;
 using EcoMoveAPI.BookingReservation.Application.Internal.OutboundServices.ACL;
 using EcoMoveAPI.BookingReservation.Application.Internal.QueryServices;
@@ -181,6 +186,10 @@ builder.Services.AddScoped<ITicketCategoryQueryService, TicketCategoryQueryServi
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionCommandService, TransactionCommandService>();
 builder.Services.AddScoped<ITransactionQueryService, TransactionQueryService>();
+
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<IBlogCommandService, BlogCommandService>();
+builder.Services.AddScoped<IBlogQueryService, BlogQueryService>();
 
 var app = builder.Build();
 
