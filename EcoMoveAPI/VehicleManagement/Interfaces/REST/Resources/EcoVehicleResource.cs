@@ -14,4 +14,4 @@ namespace EcoMoveAPI.VehicleManagement.Interfaces.REST.Resources;
  * <param name="ImageUrl">The image URL of the EcoVehicle</param>
  * <returns>The resource of an eco vehicle</returns>
  */
-public record EcoVehicleResource(int Id, string Model, int EcoVehicleTypeId, int BatteryLevel, Location Location, string Status, string ImageUrl);
+public record EcoVehicleResource(int Id, string Model, int EcoVehicleTypeId, int BatteryLevel, Location Location, string Status, string ImageUrl, string EcoVehicleName);

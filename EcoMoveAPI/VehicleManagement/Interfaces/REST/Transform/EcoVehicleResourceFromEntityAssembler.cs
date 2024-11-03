@@ -17,6 +17,6 @@ public static class EcoVehicleResourceFromEntityAssembler
     public static EcoVehicleResource ToResourceFromEntity(EcoVehicle entity)
     {
         return new EcoVehicleResource(entity.EcoVehicleId, entity.Model, entity.EcoVehicleTypeId, entity.BatteryLevel,
-            entity.Location, entity.Status, entity.ImageUrl);
+            entity.Location, entity.Status, entity.ImageUrl, entity.EcoVehicleName);
     }
 }
